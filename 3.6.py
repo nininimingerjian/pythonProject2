@@ -11,8 +11,8 @@ num_outputs = 10
 w = torch.normal(0, 0.01, size=(num_inputs, num_outputs), requires_grad=True)
 b = torch.zeros(num_outputs, requires_grad=True)
 
-X = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
-X.sum(0, keepdim=True), X.sum(1, keepdim=True)
+# X = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+# X.sum(0, keepdim=True), X.sum(1, keepdim=True)
 
 
 def softmax(x):
@@ -30,7 +30,7 @@ def cross_entropy(y_hat, y):
 
 
 def accuracy(y_hat, y):
-    if len(y_hat.shape) > 1 & y_hat.shape[1] > 1:
+    if len(y_hat.shape) > 1 and y_hat.shape[1] > 1:
         y_hat = y_hat.argmax(axis=1)
     cmp = y_hat.type(y.dtype) == y
     return float(cmp.type(y.dtype).sum())
@@ -60,7 +60,7 @@ class Accumulator:
         return self.data[item]
 
 
-print(evaluate_accuracy(net, test_iter))
+# print(evaluate_accuracy(net, test_iter))
 
 
 def train_epoch_ch3(net, train_iter, loss, updater):
